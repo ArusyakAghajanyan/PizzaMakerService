@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface ProductTypeService {
     ProductType read (int id);
+    ProductType read (String name);
 
     List<ProductType> readAll();
 

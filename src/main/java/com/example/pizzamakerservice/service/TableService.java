@@ -1,6 +1,8 @@
 package com.example.pizzamakerservice.service;
 
-import javax.persistence.Table;
+
+import com.example.pizzamakerservice.model.Table;
+
 import java.util.List;
 
 public interface TableService {
@@ -9,9 +11,14 @@ public interface TableService {
 
     List <Table> readAll();
 
-    void create ();
+    void create (Table table);
 
     Table update (int id, Table table);
 
     void delete (int id);
+
+    List<Table> readByBusy(boolean isBusy);
+
+    List<Table> readBySeatCount(int seats);
 }
+

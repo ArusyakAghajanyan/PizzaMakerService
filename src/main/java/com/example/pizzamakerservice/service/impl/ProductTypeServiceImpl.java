@@ -1,24 +1,25 @@
 package com.example.pizzamakerservice.service.impl;
 
 import com.example.pizzamakerservice.model.ProductType;
+import com.example.pizzamakerservice.repository.ProductTypeRepository;
 import com.example.pizzamakerservice.service.ProductTypeService;
 
 import java.util.List;
 
 public class ProductTypeServiceImpl implements ProductTypeService {
+    private final ProductTypeRepository productTypeRepository = new ProductTypeRepository();
     @Override
     public ProductType read(int id) {
-        return null;
+        return productTypeRepository.read(id);
     }
 
     @Override
     public List<ProductType> readAll() {
-        return null;
+        return productTypeRepository.readAll();
     }
 
     @Override
     public void create(ProductType productType) {
-
     }
 
     @Override
@@ -29,5 +30,9 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     @Override
     public void delete(int id) {
 
+    }
+    @Override
+    public ProductType read(String name) {
+        return productTypeRepository.read(name);
     }
 }
