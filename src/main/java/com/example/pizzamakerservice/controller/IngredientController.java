@@ -1,11 +1,9 @@
 package com.example.pizzamakerservice.controller;
-
 import com.example.pizzamakerservice.model.Ingredient;
-
 import com.example.pizzamakerservice.service.IngredientService;
 import com.example.pizzamakerservice.service.impl.IngredientServiceImpl;
+import com.example.pizzamakerservice.util.AccessControlOriginFilter;
 import com.google.gson.Gson;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
-
 
 
 
@@ -24,6 +20,7 @@ public class IngredientController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        AccessControlOriginFilter.setAccessControlHeaders(resp);
         List<Ingredient> data = new LinkedList<>();
         final String url = req.getParameter("url");
 
@@ -54,7 +51,7 @@ public class IngredientController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        AccessControlOriginFilter.setAccessControlHeaders(resp);
         String name = req.getParameter("name");
         Ingredient ingredient = new Ingredient(0, name);
         ingredientService.create(ingredient);
@@ -62,6 +59,7 @@ public class IngredientController extends HttpServlet {
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        AccessControlOriginFilter.setAccessControlHeaders(resp);
         Ingredient ingr = mapper(req);
         Ingredient update = ingredientService.update(ingr.getId(), ingr);
         if (update == null) {
@@ -73,6 +71,7 @@ public class IngredientController extends HttpServlet {
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        AccessControlOriginFilter.setAccessControlHeaders(resp);AccessControlOriginFilter.setAccessControlHeaders(resp);
         int id = Integer.parseInt(req.getParameter("id"));
         ingredientService.delete(id);
     }

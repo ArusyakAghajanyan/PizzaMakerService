@@ -3,6 +3,7 @@ package com.example.pizzamakerservice.controller;
 import com.example.pizzamakerservice.model.ProductType;
 import com.example.pizzamakerservice.service.ProductTypeService;
 import com.example.pizzamakerservice.service.impl.ProductTypeServiceImpl;
+import com.example.pizzamakerservice.util.AccessControlOriginFilter;
 import com.google.gson.Gson;
 
         import javax.servlet.ServletException;
@@ -23,6 +24,7 @@ public class ProductTypeController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        AccessControlOriginFilter.setAccessControlHeaders(resp);
         List<ProductType> data = new LinkedList<>();
         final String url = req.getParameter("url");
         switch (url) {
@@ -46,23 +48,19 @@ public class ProductTypeController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        AccessControlOriginFilter.setAccessControlHeaders(resp);
         super.doPost(req, resp);
         resp.getWriter().println("this is POST method");
-
         int id = list.get(list.size() - 1).getId() + 1;
         String name = req.getParameter("name");
 
-        //ProductType data = new ProductType(id,name);
-
-        //list.add(data);
-
-        //resp.getWriter().println(gson.toJson(list));
     }
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      super.doPut(req, resp);
-        System.out.println("desk");
+        AccessControlOriginFilter.setAccessControlHeaders(resp);
+        super.doPut(req, resp);
+      System.out.println("desk");
         resp.getWriter().println("this is PUT method");
 
         ProductType pdtype = null;
@@ -80,7 +78,6 @@ public class ProductTypeController extends HttpServlet {
             resp.sendError(400, "there is no table with mentioned id");
             return;
         }
-
         String name = req.getParameter("name");
         pdtype.setName(name);
 
@@ -91,6 +88,7 @@ public class ProductTypeController extends HttpServlet {
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        AccessControlOriginFilter.setAccessControlHeaders(resp);
         super.doDelete(req,  resp);
         resp.getWriter().println("this is a delete method");
 

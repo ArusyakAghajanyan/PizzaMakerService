@@ -9,22 +9,21 @@ import java.util.List;
 
 public interface ProductService {
 
-    Product readByProductType(int productTypeId);
-     ProductDto read(int id);
+
+    Product readProduct(int id);
+
+    ProductDto read(int id);
 
     List<ProductDto> readAll();
 
-    void create (Product product);
-
-   Product update (int id, Product product);
-
-    void delete (int id);
-
-    Product read(String name);
-
-    Product read(float price);
-
     List<ProductDto> readAllByProductType(int productTypeId);
+
+
+    void create(ProductDto productDto);
+
+    ProductDto update(int id, ProductDto productDto);
+
+    void delete(int id);
 
 
 }

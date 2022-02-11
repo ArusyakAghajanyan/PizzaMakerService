@@ -13,13 +13,13 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>productTypeController</servlet-name>
+        <servlet-name>productType</servlet-name>
         <servlet-class>com.example.pizzamakerservice.controller.ProductTypeController</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>productTypeController</servlet-name>
-        <url-pattern>/productType</url-pattern>
+        <servlet-name>productType</servlet-name>
+        <url-pattern>/product-type</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -40,6 +40,18 @@
         <servlet-name>ingredientController</servlet-name>
         <url-pattern>/ingredient</url-pattern>
     </servlet-mapping>
+    <servlet>
+
+        <servlet-name>orderController</servlet-name>
+        <servlet-class>com.example.pizzamakerservice.controller.OrderController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>orderController</servlet-name>
+        <url-pattern>/order</url-pattern>
+    </servlet-mapping>
+
+
+
 </web-app>
 
 
