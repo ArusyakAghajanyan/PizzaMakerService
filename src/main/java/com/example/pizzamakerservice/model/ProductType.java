@@ -1,8 +1,5 @@
 package com.example.pizzamakerservice.model;
-
 import lombok.*;
-
-import java.util.Objects;
 
 @Getter
 @Setter
@@ -11,9 +8,10 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 
-
 public class ProductType {
+
     private int id;
+
     private String name;
 
 }

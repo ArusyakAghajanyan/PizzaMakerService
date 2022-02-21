@@ -16,12 +16,9 @@ public class ProductController extends HttpServlet {
     private final ProductService productService = new ProductServiceImpl();
     private final Gson gson = new Gson();
 
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         AccessControlOriginFilter.setAccessControlHeaders(resp);
-
         String url = req.getParameter("url");
         Gson gson = new Gson();
         List<ProductDto> data = new LinkedList<>();
@@ -42,7 +39,6 @@ public class ProductController extends HttpServlet {
                 data.addAll(productService.readAll());
                 break;
         }
-
         resp.getWriter().println(gson.toJson(data));
     }
 

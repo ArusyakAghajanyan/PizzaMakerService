@@ -1,22 +1,16 @@
 package com.example.pizzamakerservice.util;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
 public class SQLConnector {
 
     private static final String user = "root";
     private static final String password = "";
     private static final String DB = "pizzaMakerDataBase";
     private static final String url = "jdbc:mysql://localhost:3306/" + DB;
-
     private static Connection connection = null;
-
     private SQLConnector() {
     }
-
-
     public static Connection getConnection() {
         try {
             if (connection == null || connection.isClosed()) {

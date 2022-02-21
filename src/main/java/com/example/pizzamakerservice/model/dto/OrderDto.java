@@ -1,9 +1,7 @@
 package com.example.pizzamakerservice.model.dto;
 import com.example.pizzamakerservice.model.Product;
 import lombok.*;
-
 import java.util.List;
-
 
 @Getter
 @Setter
@@ -11,6 +9,7 @@ import java.util.List;
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class OrderDto {
 
     private int tableId;

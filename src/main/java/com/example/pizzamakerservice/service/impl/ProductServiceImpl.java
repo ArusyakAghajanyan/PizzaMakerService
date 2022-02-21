@@ -1,5 +1,4 @@
 package com.example.pizzamakerservice.service.impl;
-
 import com.example.pizzamakerservice.model.Ingredient;
 import com.example.pizzamakerservice.model.Product;
 import com.example.pizzamakerservice.model.commons.ProductToIngredient;
@@ -7,14 +6,11 @@ import com.example.pizzamakerservice.model.dto.ProductDto;
 import com.example.pizzamakerservice.repository.ProductRepository;
 import com.example.pizzamakerservice.repository.ProductToIngredientRepository;
 import com.example.pizzamakerservice.service.ProductService;
-
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ProductServiceImpl implements ProductService {
-
     ProductRepository productRepository = new ProductRepository();
     ProductToIngredientRepository productToIngredientRepository = new ProductToIngredientRepository();
 
@@ -30,7 +26,6 @@ public class ProductServiceImpl implements ProductService {
         product.setName(fromDb.get(0).getName());
         product.setImagePath(fromDb.get(0).getImagePath());
         product.setCurrency(fromDb.get(0).getCurrency());
-
         return product;
     }
 
@@ -51,13 +46,11 @@ public class ProductServiceImpl implements ProductService {
             Ingredient ingredient = new Ingredient(item.getIngredientId(), item.getIngredientName());
             productDto.getIngredients().add(ingredient);
         });
-
         return productDto;
     }
 
     @Override
     public List<ProductDto> readAll() {
-
         List<ProductDto> fromDb = productRepository.readAll();
         List<ProductDto> data = new LinkedList<>();
         fromDb.forEach(item -> {
@@ -82,10 +75,7 @@ public class ProductServiceImpl implements ProductService {
                 data.add(productDto);
             }
             item.setId(-1);
-
         });
-
-
         return data;
     }
 
@@ -96,26 +86,20 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void create(ProductDto productDto) {
-
         if (productDto == null) {
             return;
         }
-
         Product product = new Product();
         productRepository.create(product);
-
         productDto.getIngredients().forEach(item -> {
             ProductToIngredient productToIngredient = new ProductToIngredient();
-
             productToIngredient.setIngredientId(item.getId());
             List<ProductDto> productDtos = productRepository.readAll();
             int id = productDtos.get(productDtos.size() - 1).getId();
             productToIngredient.setProductId(id);
             productToIngredientRepository.create(productToIngredient);
         });
-
     }
-
 
     @Override
     public ProductDto update(int id, ProductDto productDto) {

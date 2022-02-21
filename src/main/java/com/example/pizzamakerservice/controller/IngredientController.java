@@ -12,12 +12,9 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-
-
 public class IngredientController extends HttpServlet {
     private final IngredientService ingredientService = new IngredientServiceImpl();
     private final Gson gson = new Gson();
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         AccessControlOriginFilter.setAccessControlHeaders(resp);
@@ -79,7 +76,6 @@ public class IngredientController extends HttpServlet {
     private Ingredient mapper(HttpServletRequest req) {
         int id;
         String name;
-
         try {
             id = Integer.parseInt(req.getParameter("id"));
         } catch (NumberFormatException ex) {
@@ -90,7 +86,6 @@ public class IngredientController extends HttpServlet {
         } catch (NumberFormatException ex) {
             name = "";
         }
-
         Ingredient ingredient = new Ingredient(id, name);
         return ingredient;
     }

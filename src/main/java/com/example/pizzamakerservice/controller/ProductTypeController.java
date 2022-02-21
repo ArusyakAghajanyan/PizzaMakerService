@@ -1,20 +1,18 @@
-
 package com.example.pizzamakerservice.controller;
 import com.example.pizzamakerservice.model.ProductType;
 import com.example.pizzamakerservice.service.ProductTypeService;
 import com.example.pizzamakerservice.service.impl.ProductTypeServiceImpl;
 import com.example.pizzamakerservice.util.AccessControlOriginFilter;
 import com.google.gson.Gson;
-
-        import javax.servlet.ServletException;
-        import javax.servlet.http.HttpServlet;
-        import javax.servlet.http.HttpServletRequest;
-        import javax.servlet.http.HttpServletResponse;
-        import java.io.IOException;
-        import java.util.LinkedList;
-        import java.util.List;
-        import java.util.Random;
-        import java.util.stream.Collectors;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 public class ProductTypeController extends HttpServlet {
     private final ProductTypeService productTypeService = new ProductTypeServiceImpl();
@@ -53,7 +51,6 @@ public class ProductTypeController extends HttpServlet {
         resp.getWriter().println("this is POST method");
         int id = list.get(list.size() - 1).getId() + 1;
         String name = req.getParameter("name");
-
     }
 
     @Override
@@ -62,27 +59,21 @@ public class ProductTypeController extends HttpServlet {
         super.doPut(req, resp);
       System.out.println("desk");
         resp.getWriter().println("this is PUT method");
-
         ProductType pdtype = null;
-
         int id = Integer.parseInt(req.getParameter("id"));
-
         for (int i = 0; i < list.size(); i++){
             if(list.get(i).getId() == id){
                 pdtype = list.get(i);
                 break;
             }
         }
-
         if(pdtype == null){
             resp.sendError(400, "there is no table with mentioned id");
             return;
         }
         String name = req.getParameter("name");
         pdtype.setName(name);
-
         resp.getWriter().println(gson.toJson(list));
-
     }
 
 
@@ -91,16 +82,11 @@ public class ProductTypeController extends HttpServlet {
         AccessControlOriginFilter.setAccessControlHeaders(resp);
         super.doDelete(req,  resp);
         resp.getWriter().println("this is a delete method");
-
         int delId = Integer.parseInt(req.getParameter("idToDelete"));
-
         List<ProductType> collect = list.stream().filter(item -> item.getId() == delId).collect(Collectors.toList());
-
         list.removeAll(collect);
-
         resp.getWriter().println(gson.toJson(list));
     }
-
 }
 
 

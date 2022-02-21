@@ -1,8 +1,5 @@
 package com.example.pizzamakerservice.model;
-
 import lombok.*;
-
-
 
 @Getter
 @Setter
@@ -12,10 +9,16 @@ import lombok.*;
 @NoArgsConstructor
 
 public class Product {
+
     private int id;
+
     private int productTypeId;
+
     private String name;
+
     private float price;
+
     private String imagePath;
+
     private String currency;
 }

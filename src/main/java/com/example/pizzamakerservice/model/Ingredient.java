@@ -1,7 +1,6 @@
 package com.example.pizzamakerservice.model;
 import lombok.*;
 
-
 @Getter
 @Setter
 @ToString
@@ -11,6 +10,8 @@ import lombok.*;
 
 
 public class Ingredient {
+
     private int id;
+
     private String name;
 }

@@ -16,9 +16,6 @@ public class TableController extends HttpServlet {
     private final TableService tableService = new TableServiceImpl();
     private final Gson gson = new Gson();
 
-    /**getParameter
-     * * this method is getting parameters from request with name (url) and with switch case and maps request for concrete case
-     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         AccessControlOriginFilter.setAccessControlHeaders(resp);

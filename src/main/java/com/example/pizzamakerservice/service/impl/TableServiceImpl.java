@@ -1,17 +1,12 @@
 package com.example.pizzamakerservice.service.impl;
-
 import com.example.pizzamakerservice.model.Table;
 import com.example.pizzamakerservice.repository.TableRepository;
 import com.example.pizzamakerservice.service.TableService;
-
-
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class TableServiceImpl implements TableService {
     private final TableRepository tableRepository = new TableRepository();
-
-
 
     @Override
     public Table read(int id) {
@@ -43,7 +38,6 @@ public class TableServiceImpl implements TableService {
     @Override
     public void delete(int id) {
         tableRepository.delete(id);
-
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.example.pizzamakerservice.model.dto;
 
 import com.example.pizzamakerservice.model.Ingredient;
 import lombok.*;
-
 import java.util.List;
 
 @Getter
@@ -11,9 +10,10 @@ import java.util.List;
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductDto {
-    private int id;
 
+public class ProductDto {
+
+    private int id;
 
     private int productTypeId;
 
@@ -30,6 +30,5 @@ public class ProductDto {
     private String currency;
 
     private List<Ingredient> ingredients;
-
 
 }

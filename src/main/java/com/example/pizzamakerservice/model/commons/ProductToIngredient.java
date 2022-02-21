@@ -9,6 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 
 public class ProductToIngredient {
+
     private int id;
 
     private int ingredientId;

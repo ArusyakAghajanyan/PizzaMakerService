@@ -1,9 +1,7 @@
 package com.example.pizzamakerservice.repository;
-
 import com.example.pizzamakerservice.model.Product;
 import com.example.pizzamakerservice.model.dto.ProductDto;
 import com.example.pizzamakerservice.util.SQLConnector;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,8 +10,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ProductRepository {
-
-
     public List<ProductDto> read(int id) {
         List<ProductDto> data = new LinkedList<>();
         Connection connection = SQLConnector.getConnection();
@@ -34,20 +30,15 @@ public class ProductRepository {
                     "where product_to_ingredient.product_id = ?");
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
-
             data.addAll(listMapper(resultSet));
-
-
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-
         return data;
     }
 
     public List<ProductDto> readAll() {
         List<ProductDto> data = new LinkedList<>();
-
         Connection connection = SQLConnector.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("select product_type_id,\n" +
@@ -65,15 +56,12 @@ public class ProductRepository {
                     "                    on product_to_ingredient.ingredient_id = ingredient.id\n");
             ResultSet resultSet = preparedStatement.executeQuery();
             data.addAll(listMapper(resultSet));
-
-
             resultSet.close();
             connection.close();
 
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-
         return data;
     }
 
@@ -126,7 +114,6 @@ public class ProductRepository {
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
-
     }
 
     private List<ProductDto> listMapper(ResultSet resultSet) throws SQLException {
@@ -147,7 +134,6 @@ public class ProductRepository {
         pDto.setPrice(resultSet.getFloat("price"));
         pDto.setImagePath(resultSet.getString("image_path"));
         pDto.setCurrency(resultSet.getString("currency"));
-
         return pDto;
     }
 }

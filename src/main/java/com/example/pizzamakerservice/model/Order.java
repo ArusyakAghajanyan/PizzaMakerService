@@ -1,5 +1,4 @@
 package com.example.pizzamakerservice.model;
-
 import lombok.*;
 
 @Getter
@@ -9,6 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Order {
+
     private int id;
 
     private int tableId;
